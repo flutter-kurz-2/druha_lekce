@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'second_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -124,6 +124,17 @@ class _HomeScreenState extends State<HomeScreen> {
             addButton(-10),
             addButton(-100),
             addButton(-1000),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SecondScreen(),
+                    )
+                );
+              },
+              child: const Text("Second Screen")
+            ),
           ],
         ),
       ),

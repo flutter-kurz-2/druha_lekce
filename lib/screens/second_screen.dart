@@ -55,6 +55,7 @@ class _SecondScreenState extends State<SecondScreen> {
             if (!won) const Text("0 < ? < 100"),
             if (!won)
               TextField(
+                textAlign: TextAlign.center,
                 keyboardType: TextInputType.number,
                 controller: guessController,
               ),

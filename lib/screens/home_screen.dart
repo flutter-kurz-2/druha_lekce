@@ -17,7 +17,9 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     setState(() {
       floatingButton = FloatingActionButton(
-        onPressed: () {_addCounter(1);},
+        onPressed: () {
+          _addCounter(1);
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.exposure_plus_1),
       );
@@ -38,20 +40,23 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _changeButton() {
-    if(buttonIsAdding) {
+    if (buttonIsAdding) {
       setState(() {
         floatingButton = FloatingActionButton(
-          onPressed: () {_addCounter(-1);},
+          onPressed: () {
+            _addCounter(-1);
+          },
           tooltip: 'Decrement',
           child: const Icon(Icons.exposure_minus_1),
         );
         buttonIsAdding = false;
       });
-    }
-    else {
+    } else {
       setState(() {
         floatingButton = FloatingActionButton(
-          onPressed: () {_addCounter(1);},
+          onPressed: () {
+            _addCounter(1);
+          },
           tooltip: 'Increment',
           child: const Icon(Icons.exposure_plus_1),
         );
@@ -62,10 +67,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget addButton(int add) {
     String text = "";
-    if(add >= 0) {
+    if (add >= 0) {
       text = "+" + add.toString();
-    }
-    else {
+    } else {
       text = "-" + add.toString();
     }
     return ElevatedButton(
@@ -81,14 +85,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   String returnSubtitle() {
-    if(DateTime.now().weekday == DateTime.wednesday) {
+    if (DateTime.now().weekday == DateTime.wednesday) {
       return "Dneska máme lekci!";
-    }
-    else {
+    } else {
       return "Dneska nemáme lekci :(";
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -125,16 +127,14 @@ class _HomeScreenState extends State<HomeScreen> {
             addButton(-100),
             addButton(-1000),
             ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SecondScreen(),
-                    )
-                );
-              },
-              child: const Text("Second Screen")
-            ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SecondScreen(),
+                      ));
+                },
+                child: const Text("Second Screen")),
           ],
         ),
       ),

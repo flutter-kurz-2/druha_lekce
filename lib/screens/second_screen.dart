@@ -26,7 +26,7 @@ class _SecondScreenState extends State<SecondScreen> {
   }
 
   bool checkIfCorrect(int guess) {
-    if(guess == numberToGuess) {
+    if (guess == numberToGuess) {
       return true;
     }
     return false;
@@ -34,7 +34,6 @@ class _SecondScreenState extends State<SecondScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -44,28 +43,32 @@ class _SecondScreenState extends State<SecondScreen> {
       body: Container(
         child: Column(
           children: <Widget>[
-            if(!won) const Text("Let's play a game..."),
-            if(!won) const Text("0 < ? < 100"),
-            if(!won) TextField(
-              keyboardType: TextInputType.number,
-              controller: guessController,
-            ),
-            if(!won && wrongGuess) const Text("Wrong guess!!"),
-            if(!won) ElevatedButton(onPressed: () {
-              bool correct = checkIfCorrect(int.parse(guessController.text));
+            if (!won) const Text("Let's play a game..."),
+            if (!won) const Text("0 < ? < 100"),
+            if (!won)
+              TextField(
+                keyboardType: TextInputType.number,
+                controller: guessController,
+              ),
+            if (!won && wrongGuess) const Text("Wrong guess!!"),
+            if (!won)
+              ElevatedButton(
+                  onPressed: () {
+                    bool correct =
+                        checkIfCorrect(int.parse(guessController.text));
 
-              if(correct) {
-                setState(() {
-                  won = true;
-                });
-              }
-              else {
-                setState(() {
-                  wrongGuess = true;
-                });
-              }
-            }, child: const Text("Submit")),
-            if(won) Text("You won!"),
+                    if (correct) {
+                      setState(() {
+                        won = true;
+                      });
+                    } else {
+                      setState(() {
+                        wrongGuess = true;
+                      });
+                    }
+                  },
+                  child: const Text("Submit")),
+            if (won) Text("You won!"),
           ],
         ),
       ),

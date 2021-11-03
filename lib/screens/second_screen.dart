@@ -13,6 +13,7 @@ class _SecondScreenState extends State<SecondScreen> {
   late int numberToGuess;
   bool won = false;
   bool wrongGuess = false;
+  String wrongGuessText = "";
 
   @override
   void initState() {
@@ -27,6 +28,13 @@ class _SecondScreenState extends State<SecondScreen> {
 
   bool checkIfCorrect(int guess) {
     if (guess == numberToGuess) {
+      return true;
+    }
+    return false;
+  }
+
+  bool isGuessLarger(int guess) {
+    if(guess > numberToGuess) {
       return true;
     }
     return false;
@@ -50,7 +58,7 @@ class _SecondScreenState extends State<SecondScreen> {
                 keyboardType: TextInputType.number,
                 controller: guessController,
               ),
-            if (!won && wrongGuess) const Text("Wrong guess!!"),
+            if (!won && wrongGuess) Text(wrongGuessText),
             if (!won)
               ElevatedButton(
                   onPressed: () {
@@ -60,15 +68,31 @@ class _SecondScreenState extends State<SecondScreen> {
                     if (correct) {
                       setState(() {
                         won = true;
+                        wrongGuess = false;
+                        guessController.clear();
                       });
                     } else {
                       setState(() {
                         wrongGuess = true;
+                        if(isGuessLarger(int.parse(guessController.text))) {
+                          wrongGuessText = "Your guess is too large!";
+                        }
+                        else {
+                          wrongGuessText = "Your guess is too small!";
+                        }
+                        guessController.clear();
                       });
                     }
                   },
                   child: const Text("Submit")),
-            if (won) Text("You won!"),
+            if (won) const Text("You won!"),
+            if (won) ElevatedButton(onPressed: () {
+              setState(() {
+                numberToGuess = generateNumber();
+                won = false;
+                wrongGuess = false;
+              });
+            }, child: const Text("Play again!")),
           ],
         ),
       ),

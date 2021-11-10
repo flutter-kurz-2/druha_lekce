@@ -26,7 +26,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
     path = prefs.getString("LATEST_PICTURE");
     image = File(path!);
     setState(() {
-      
+
     });
   }
 

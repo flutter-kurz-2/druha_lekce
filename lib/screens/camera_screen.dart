@@ -43,6 +43,7 @@ class _CameraScreenState extends State<CameraScreen> {
   void savePicture() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     XFile output;
+    controller!.setFlashMode(FlashMode.off);
     output = await controller!.takePicture();
     prefs.setString("LATEST_PICTURE", output.path);
     print(output.path);

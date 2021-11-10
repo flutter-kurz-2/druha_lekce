@@ -49,19 +49,21 @@ class _SecondScreenState extends State<SecondScreen> {
         title: const Text("Second Screen"),
       ),
       body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/images/congrats.png")),
-        ),
+        width: MediaQuery.of(context).size.width,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             if (!won) const Text("Let's play a game..."),
             if (!won) const Text("0 < ? < 100"),
             if (!won)
-              TextField(
-                textAlign: TextAlign.center,
-                keyboardType: TextInputType.number,
-                controller: guessController,
+              Container(
+                padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+                child: TextField(
+                  textAlign: TextAlign.center,
+                  keyboardType: TextInputType.number,
+                  controller: guessController,
+                ),
               ),
             if (!won && wrongGuess) Text(wrongGuessText),
             if (!won)

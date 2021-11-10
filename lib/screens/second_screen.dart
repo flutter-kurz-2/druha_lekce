@@ -49,6 +49,10 @@ class _SecondScreenState extends State<SecondScreen> {
         title: const Text("Second Screen"),
       ),
       body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/congrats.png")),
+        ),
         child: Column(
           children: <Widget>[
             if (!won) const Text("Let's play a game..."),

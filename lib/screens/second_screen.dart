@@ -34,7 +34,7 @@ class _SecondScreenState extends State<SecondScreen> {
   }
 
   bool isGuessLarger(int guess) {
-    if(guess > numberToGuess) {
+    if (guess > numberToGuess) {
       return true;
     }
     return false;
@@ -81,10 +81,9 @@ class _SecondScreenState extends State<SecondScreen> {
                     } else {
                       setState(() {
                         wrongGuess = true;
-                        if(isGuessLarger(int.parse(guessController.text))) {
+                        if (isGuessLarger(int.parse(guessController.text))) {
                           wrongGuessText = "Your guess is too large!";
-                        }
-                        else {
+                        } else {
                           wrongGuessText = "Your guess is too small!";
                         }
                         guessController.clear();
@@ -93,13 +92,16 @@ class _SecondScreenState extends State<SecondScreen> {
                   },
                   child: const Text("Submit")),
             if (won) const Text("You won!"),
-            if (won) ElevatedButton(onPressed: () {
-              setState(() {
-                numberToGuess = generateNumber();
-                won = false;
-                wrongGuess = false;
-              });
-            }, child: const Text("Play again!")),
+            if (won)
+              ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      numberToGuess = generateNumber();
+                      won = false;
+                      wrongGuess = false;
+                    });
+                  },
+                  child: const Text("Play again!")),
           ],
         ),
       ),

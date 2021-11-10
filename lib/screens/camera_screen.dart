@@ -12,12 +12,10 @@ class _CameraScreenState extends State<CameraScreen> {
   CameraController? controller;
   List<CameraDescription> cameras = [];
 
-
   @override
   void initState() {
     super.initState();
     readyCameras();
-
   }
 
   Future getCameras() async {

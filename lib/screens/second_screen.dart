@@ -58,7 +58,7 @@ class _SecondScreenState extends State<SecondScreen> {
             if (!won) const Text("0 < ? < 100"),
             if (!won)
               Container(
-                padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+                margin: const EdgeInsets.only(left: 25.0, right: 25.0),
                 child: TextField(
                   textAlign: TextAlign.center,
                   keyboardType: TextInputType.number,

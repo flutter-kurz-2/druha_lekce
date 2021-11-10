@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({Key? key}) : super(key: key);
@@ -39,6 +40,14 @@ class _CameraScreenState extends State<CameraScreen> {
     super.dispose();
   }
 
+  void savePicture() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    XFile output;
+    output = await controller!.takePicture();
+    prefs.setString("LATEST_PICTURE", output.path);
+    print(output.path);
+  }
+
   @override
   Widget build(BuildContext context) {
     if (controller == null || !controller!.value.isInitialized) {
@@ -49,8 +58,19 @@ class _CameraScreenState extends State<CameraScreen> {
         title: const Text("Second Screen"),
       ),
       body: Container(
-        child: CameraPreview(controller!),
-      ),
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            height: 600,
+            child: CameraPreview(controller!),),
+          ElevatedButton(onPressed: () {
+            savePicture();
+          }, child: const Text("Vyfotit!"))
+        ],
+      ),)
     );
   }
 }

@@ -35,12 +35,14 @@ class _GalleryScreenState extends State<GalleryScreen> {
     Widget body = Container(child: Text("Wrong"));
     if(image != null) {
       body = Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         child: Image.file(image!),
       );
     }
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Second Screen"),
+          title: const Text("Gallery Screen"),
         ),
         body: body,
     );

@@ -63,6 +63,11 @@ class _SecondScreenState extends State<SecondScreen> {
                   textAlign: TextAlign.center,
                   keyboardType: TextInputType.number,
                   controller: guessController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder (
+                        borderRadius: BorderRadius.circular(30)
+                              )
+                          )
                 ),
               ),
             if (!won && wrongGuess) Text(wrongGuessText),
@@ -91,9 +96,10 @@ class _SecondScreenState extends State<SecondScreen> {
                     }
                   },
                   child: const Text("Submit")),
+            if (won)
             if (won) const Text("You won!"),
             if (won)
-              ElevatedButton(
+              TextButton(
                   onPressed: () {
                     setState(() {
                       numberToGuess = generateNumber();

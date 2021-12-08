@@ -35,6 +35,8 @@ class _GalleryScreenState extends State<GalleryScreen> {
     Widget body = Container(child: Text("NicTuNení"));
     if(image != null) {
       body = Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         child: Image.file(image!),
       );
     }

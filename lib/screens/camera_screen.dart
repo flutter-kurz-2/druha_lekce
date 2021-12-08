@@ -9,6 +9,7 @@ class CameraScreen extends StatefulWidget {
   State<CameraScreen> createState() => _CameraScreenState();
 }
 
+
 class _CameraScreenState extends State<CameraScreen> {
   CameraController? controller;
   List<CameraDescription> cameras = [];
@@ -55,23 +56,23 @@ class _CameraScreenState extends State<CameraScreen> {
       return Container();
     }
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text("Second Screen"),
+        title: const Text("Camera Screen"),
+        backgroundColor: Colors.black,
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            height: 600,
-            child: CameraPreview(controller!),),
-          ElevatedButton(onPressed: () {
-            savePicture();
-          }, child: const Text("Vyfotit!"))
-        ],
-      ),)
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+      children: <Widget>[
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: CameraPreview(controller!),),
+        ElevatedButton(onPressed: () {
+          savePicture();
+        }, child: const Text("Vyfotit!")),
+      ],
+      )
     );
   }
 }

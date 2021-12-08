@@ -32,7 +32,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Widget body = Container(child: Text("Wrong"));
+    Widget body = Container(child: Text("NicTuNení"));
     if(image != null) {
       body = Container(
         width: MediaQuery.of(context).size.width,
@@ -42,7 +42,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
     }
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Gallery Screen"),
+          title: const Text("Gallery"),
         ),
         body: body,
     );

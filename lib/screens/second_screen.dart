@@ -46,7 +46,7 @@ class _SecondScreenState extends State<SecondScreen> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: const Text("Second Screen"),
+        title: const Text("Simple Game"),
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,

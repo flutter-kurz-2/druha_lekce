@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: const Text("Titulek"),
+        title: const Text("HomeScreen"),
       ),
       body: Center(
         child: Column(
@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (context) => const SecondScreen(),
                       ));
                 },
-                child: const Text("Second Screen")),
+                child: const Text("Simple Game")),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (context) => const CameraScreen(),
                       ));
                 },
-                child: const Text("Camera Screen")),
+                child: const Text("Camera")),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (context) => const GalleryScreen(),
                       ));
                 },
-                child: const Text("Gallery Screen")),
+                child: const Text("Gallery")),
           ],
         ),
       ),

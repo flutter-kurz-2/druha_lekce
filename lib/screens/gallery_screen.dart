@@ -32,7 +32,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Widget body = Container(child: Text("Wrong"));
+    Widget body = Container(child: Text("NicTuNení"));
     if(image != null) {
       body = Container(
         child: Image.file(image!),
@@ -40,7 +40,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
     }
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Second Screen"),
+          title: const Text("Gallery"),
         ),
         body: body,
     );

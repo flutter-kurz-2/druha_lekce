@@ -56,7 +56,7 @@ class _CameraScreenState extends State<CameraScreen> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Second Screen"),
+        title: const Text("Camera"),
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -69,7 +69,7 @@ class _CameraScreenState extends State<CameraScreen> {
             child: CameraPreview(controller!),),
           ElevatedButton(onPressed: () {
             savePicture();
-          }, child: const Text("Vyfotit!"))
+          }, child: const Text("Take a photo!"))
         ],
       ),)
     );

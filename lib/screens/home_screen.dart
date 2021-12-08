@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (context) => const SecondScreen(),
                       ));
                 },
-                child: const Text("Second Screen")),
+                child: const Text("Druha Strana")),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(

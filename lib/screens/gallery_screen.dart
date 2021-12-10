@@ -1,8 +1,7 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'home_screen.dart';
 class GalleryScreen extends StatefulWidget {
   const GalleryScreen({Key? key}) : super(key: key);
 
@@ -32,7 +31,12 @@ class _GalleryScreenState extends State<GalleryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Widget body = Container(child: Text("Wrong"));
+    Widget body = Container(child: Column(
+      children: <Widget>[
+        if (english) const Text('Nothing is here :)')
+        else const Text('Nic tu není :)')
+      ],
+    ));
     if(image != null) {
       body = Container(
         width: MediaQuery.of(context).size.width,
@@ -42,7 +46,12 @@ class _GalleryScreenState extends State<GalleryScreen> {
     }
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Gallery Screen"),
+          title: Column(
+            children: <Widget>[
+              if (english) const Text('Gallery screen')
+              else const Text('Galerie')
+            ],
+          ),
         ),
         body: body,
     );

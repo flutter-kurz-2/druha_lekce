@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'home_screen.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({Key? key}) : super(key: key);
@@ -39,14 +40,19 @@ class _SecondScreenState extends State<SecondScreen> {
     }
     return false;
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: const Text("Second Screen"),
+        title: Column(
+          children: <Widget>[
+            if (english) const Text('Simple game')
+            else const Text('Jednoduchá hra')
+          ],
+        ),
       ),
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -54,7 +60,8 @@ class _SecondScreenState extends State<SecondScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            if (!won) const Text("Let's play a game..."),
+            if (!won) if (english) const Text("Let's play a game...")
+            else const Text("Pojďme si zahrát hru"),
             if (!won) const Text("0 < ? < 100"),
             if (!won)
               Container(
@@ -87,17 +94,25 @@ class _SecondScreenState extends State<SecondScreen> {
                       setState(() {
                         wrongGuess = true;
                         if (isGuessLarger(int.parse(guessController.text))) {
-                          wrongGuessText = "Your guess is too large!";
+                          if (english) wrongGuessText = "Your guess is too large!";
+                          else wrongGuessText = "Tvůj odhad je příliš velký";
                         } else {
-                          wrongGuessText = "Your guess is too small!";
+                          if (english) wrongGuessText = "Your guess is too small!";
+                          else wrongGuessText = "Tvůj odhad je příliš malý";
                         }
                         guessController.clear();
                       });
                     }
                   },
-                  child: const Text("Submit")),
+                  child: Column(
+                    children: <Widget>[
+                      if (english) const Text("Submit!")
+                      else const Text("Zkusit!")
+                    ],
+                  )),
             if (won)
-            if (won) const Text("You won!"),
+            if (won) if (english) const Text("You won!")
+            else const Text("Vyhrál jsi!"),
             if (won)
               TextButton(
                   onPressed: () {
@@ -107,7 +122,12 @@ class _SecondScreenState extends State<SecondScreen> {
                       wrongGuess = false;
                     });
                   },
-                  child: const Text("Play again!")),
+                  child: Column(
+                    children: <Widget>[
+                      if (english) const Text('Play again!')
+                      else const Text('Hrát znovu!')
+                    ],
+                  )),
           ],
         ),
       ),

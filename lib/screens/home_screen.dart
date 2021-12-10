@@ -6,16 +6,25 @@ import 'gallery_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+  
 
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+bool english = true;
+
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+  }
+  
+  void toggle() {
+    setState(() {
+      english = !english;
+    });
   }
 
 
@@ -23,9 +32,28 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              if (english) const Text('English')
+              else const Text('Čeština')
+            ],
+          ),
+          Switch(value: english, onChanged: (value) {
+            setState(() {
+              english = value;
+            });
+          }, activeColor: Colors.white24, )
+        ],
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: const Text("Titulek"),
+        title: Column(
+          children: <Widget>[
+            if (english) const Text('Home Screen')
+            else const Text('Domovská obrazovka')
+          ],
+        )
       ),
       body: Center(
         child: Column(
@@ -39,7 +67,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (context) => const SecondScreen(),
                       ));
                 },
-                child: const Text("Second Screen")),
+                child: Column(
+                  children: <Widget>[
+                    if (english) const Text('Simple game')
+                    else const Text('Jednoduchá hra')
+                  ],
+                ) ),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -48,7 +81,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (context) => const CameraScreen(),
                       ));
                 },
-                child: const Text("Camera Screen")),
+                child: Column(
+                  children: <Widget>[
+                    if (english) const Text('Camera')
+                    else const Text('Fotoaparát')
+                  ],
+                ) ),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(
@@ -57,7 +95,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         builder: (context) => const GalleryScreen(),
                       ));
                 },
-                child: const Text("Gallery Screen")),
+                child: Column(
+                  children: <Widget>[
+                    if (english) const Text('Gallery')
+                    else const Text('Galerie')
+                  ],
+                )),
           ],
         ),
       ),

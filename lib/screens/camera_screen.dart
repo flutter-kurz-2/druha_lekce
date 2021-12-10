@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'home_screen.dart';
 
 class CameraScreen extends StatefulWidget {
   const CameraScreen({Key? key}) : super(key: key);
@@ -58,7 +59,12 @@ class _CameraScreenState extends State<CameraScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text("Camera Screen"),
+        title: Column(
+          children: <Widget>[
+            if (english) const Text('Camera Screen')
+            else const Text('Fotoaparát')
+          ],
+        ),
         backgroundColor: Colors.black,
       ),
       body: Stack(
@@ -70,7 +76,16 @@ class _CameraScreenState extends State<CameraScreen> {
           child: CameraPreview(controller!),),
         ElevatedButton(onPressed: () {
           savePicture();
-        }, child: const Text("Vyfotit!")),
+        }, child: SizedBox(
+          height: 25,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              if (english) const Text('Take a photo!')
+              else const Text('Vyfotit!')
+            ],
+          )
+        )),
       ],
       )
     );
